@@ -1,0 +1,25 @@
+$footer-height: 60px;
+.c {
+  &-sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    max-width: 400px;
+  }
+  &-form {
+    min-height: 100%;
+  }
+  &-footer--sticky {
+    position: sticky;
+    bottom: 0;
+    height: $footer-height;
+    background-color: #fff;
+    box-shadow: -2px 0px 6px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}

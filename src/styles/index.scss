@@ -1,0 +1,18 @@
+@import "./css/antd.css";
+@import "./utils.scss";
+@import "./components.scss";
+
+$primary: #00c5a3;
+$primary-hover: lighten(
+  $color: $primary,
+  $amount: 3,
+);
+
+.ant-select-arrow {
+  display: flex;
+  align-items: center;
+  top: 0;
+  height: 100%;
+  margin-top: 0;
+  margin-right: 11px;
+}

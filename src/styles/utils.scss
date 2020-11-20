@@ -1,0 +1,22 @@
+
+.u {
+  &-margin {
+    &-h--sm {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+  }
+  &-width--full {
+    width: 100%;
+  }
+  &-display {
+    &--block {
+      display: block;
+    }
+  }
+  &-color {
+    &--black {
+      color: #000;
+    }
+  }
+}
