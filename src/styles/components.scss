@@ -36,7 +36,7 @@ $footer-height: 60px;
   &-person-list {
     max-width: 420px;
     margin: 0 auto;
-    &--empty {
+    &__empty {
       border-radius: 2px;
       border: 1px solid rgb(224, 224, 224);
       display: flex;
@@ -44,7 +44,35 @@ $footer-height: 60px;
       justify-content: center;
       flex-direction: column;
       min-height: 241px;
-      color: rgba(0, 0, 0, 0.47);
+      color: $gray;
+    }
+    &__grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .c-person {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 200px;
+        flex-basis: 100%;
+        margin-bottom: 20px;
+        border: 1px solid rgb(224, 224, 224);
+        &--add {
+          border: 1px dashed rgb(224, 224, 224);
+        }
+        @include respond-to(small) {
+          flex-basis: 48%;
+        }
+        &__name {
+          color: $primary;
+          text-decoration: underline;
+        }
+        &__rel {
+          color: $gray;
+        }
+      }
     }
   }
   &-add-icon {

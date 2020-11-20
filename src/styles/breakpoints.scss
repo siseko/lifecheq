@@ -1,0 +1,15 @@
+$breakpoints: (
+  "small": 425px,
+  "medium": 768px,
+  "large": 1200px,
+);
+
+@mixin respond-to($name) {
+  @if map-has-key($breakpoints, $name) {
+    @media (min-width: map-get($breakpoints, $name) + 1) {
+      @content;
+    }
+  } @else {
+    @warn 'No breakpoint: `#{$name}` defined in breakpoints.scss';
+  }
+}

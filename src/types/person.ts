@@ -1,8 +1,8 @@
 interface IPerson {
   id: string;
   relationship: string;
-  firstName: string;
-  lastName: string;
+  name: string;
+  surname: string;
   sex: "male" | "female";
   dob: any;
   nationalities: string;

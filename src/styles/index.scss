@@ -1,8 +1,9 @@
 @import "./css/antd.css";
+@import "./breakpoints.scss";
 @import "./variables.scss";
-@import "./utils.scss";
 @import "./spacing.scss";
 @import "./components.scss";
+@import "./utils.scss";
 
 $primary: #00c5a3;
 $primary-hover: lighten(

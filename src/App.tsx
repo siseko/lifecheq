@@ -15,7 +15,10 @@ const App = (props: any) => {
       />
       <Sidebar isOpen={sideBarOpen} onClose={() => setSideBarOpen(false)}>
         <AddPerson
-          onFinish={(values: any) => props.addPerson(values)}
+          onFinish={(values: any) => {
+            props.addPerson(values);
+            setSideBarOpen(false);
+          }}
           onCancel={() => setSideBarOpen(false)}
         />
       </Sidebar>
