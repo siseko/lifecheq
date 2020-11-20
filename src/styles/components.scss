@@ -7,9 +7,20 @@ $footer-height: 60px;
     bottom: 0;
     overflow-y: scroll;
     max-width: 400px;
+    background-color: #fff;
+
+    &-overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
   }
   &-form {
     min-height: 100%;
+    padding: 30px;
   }
   &-footer--sticky {
     position: sticky;

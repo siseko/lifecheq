@@ -1,14 +1,18 @@
 import { Button } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import AddPerson from "./AddPerson";
 import Sidebar from "./Sidebar";
 
 const App = () => {
+  const [sideBarOpen, setSideBarOpen] = useState(false);
   return (
     <>
-      <Button>Add</Button>
-      <Sidebar>
-        <AddPerson onFinish={(values: any) => console.log(values)} />
+      <Button onClick={() => setSideBarOpen(!sideBarOpen)}>Add</Button>
+      <Sidebar isOpen={sideBarOpen} onClose={() => setSideBarOpen(false)}>
+        <AddPerson
+          onFinish={(values: any) => console.log(values)}
+          onCancel={() => setSideBarOpen(false)}
+        />
       </Sidebar>
     </>
   );
