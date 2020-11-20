@@ -33,7 +33,6 @@ const Person = ({
           style={{ position: "relative" }}
           className="u-children--center"
           onMouseEnter={() => setShowRemove(true)}
-          onMouseLeave={() => setShowRemove(false)}
           onClick={(e) => setShowRemove(!showRemove)}
         >
           {showRemove && (
