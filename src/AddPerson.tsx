@@ -3,11 +3,12 @@ import { Form, Input, Button, DatePicker, Radio, Select } from "antd";
 import Calendar from "@material-ui/icons/CalendarToday";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import ArrowBack from "@material-ui/icons/ArrowBack";
+import IPerson from "./types/person";
 
 type Props = {
   onFinish: (values: any) => void;
   onCancel: () => void;
-  editMode?: boolean;
+  person?: IPerson;
 };
 
 const AddPerson = (props: Props) => {
@@ -18,15 +19,23 @@ const AddPerson = (props: Props) => {
   return (
     <>
       <div className="c-form">
-        <h1>{props.editMode ? "" : "Add a related person"}</h1>
+        <h1>
+          {props.person
+            ? `Edit ${props.person?.name} ${props.person?.surname}`
+            : "Add a related person"}
+        </h1>
         <Form
           name="related-persons"
           layout="vertical"
           requiredMark={false}
-          initialValues={{
-            sex: "Male",
-            isSouthAfrican: 1,
-          }}
+          initialValues={
+            props.person
+              ? props.person
+              : {
+                  sex: "Male",
+                  isSouthAfrican: 1,
+                }
+          }
           onFinish={props.onFinish}
         >
           <Form.Item

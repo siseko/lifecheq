@@ -45,6 +45,7 @@ $footer-height: 60px;
       flex-direction: column;
       min-height: 241px;
       color: $gray;
+      margin: 10px;
     }
     &__grid {
       display: flex;
@@ -62,8 +63,12 @@ $footer-height: 60px;
         &--add {
           border: 1px dashed rgb(224, 224, 224);
         }
+        padding: 10px 0;
+        margin: 10px;
         @include respond-to(small) {
           flex-basis: 48%;
+          padding: 0;
+          margin: 10px 0;
         }
         &__name {
           color: $primary;

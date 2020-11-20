@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 import AddPerson from "./AddPerson";
 import { PersonsList } from "./PersonsList";
 import Sidebar from "./Sidebar";
-import { addPerson, PersonReducerState } from "./store/person";
+import {
+  addPerson,
+  PersonReducerState,
+  setCurrentPerson,
+} from "./store/person";
 
 const App = (props: any) => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -13,13 +17,20 @@ const App = (props: any) => {
         persons={props.persons}
         onAdd={() => setSideBarOpen(!sideBarOpen)}
       />
-      <Sidebar isOpen={sideBarOpen} onClose={() => setSideBarOpen(false)}>
+      <Sidebar
+        isOpen={sideBarOpen || props.currentPerson}
+        onClose={() => {
+          setSideBarOpen(false);
+          props.setCurrentPerson("");
+        }}
+      >
         <AddPerson
           onFinish={(values: any) => {
-            props.addPerson(values);
+            props.addPerson({ ...values, id: props.currentPerson?.id });
             setSideBarOpen(false);
           }}
           onCancel={() => setSideBarOpen(false)}
+          person={props.currentPerson}
         />
       </Sidebar>
     </>
@@ -28,8 +39,9 @@ const App = (props: any) => {
 
 const mapStateToProps = ({ person }: { person: PersonReducerState }) => ({
   persons: Object.values(person.persons),
+  currentPerson: person.currentPerson,
 });
 
-const mapDispatchToProps = { addPerson };
+const mapDispatchToProps = { addPerson, setCurrentPerson };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

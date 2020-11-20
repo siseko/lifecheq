@@ -13,7 +13,10 @@
     }
   }
   &-children--center {
-    display: flex;
+    display: flex !important;
     align-items: center;
+  }
+  &-border--right {
+    border-right: 1px solid hsl(0, 0, 85);
   }
 }
