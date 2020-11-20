@@ -1,16 +1,21 @@
-import { Button } from "antd";
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import AddPerson from "./AddPerson";
+import { PersonsList } from "./PersonsList";
 import Sidebar from "./Sidebar";
+import { addPerson, PersonReducerState } from "./store/person";
 
-const App = () => {
+const App = (props: any) => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   return (
     <>
-      <Button onClick={() => setSideBarOpen(!sideBarOpen)}>Add</Button>
+      <PersonsList
+        persons={props.persons}
+        onAdd={() => setSideBarOpen(!sideBarOpen)}
+      />
       <Sidebar isOpen={sideBarOpen} onClose={() => setSideBarOpen(false)}>
         <AddPerson
-          onFinish={(values: any) => console.log(values)}
+          onFinish={(values: any) => props.addPerson(values)}
           onCancel={() => setSideBarOpen(false)}
         />
       </Sidebar>
@@ -18,4 +23,10 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = ({ person }: { person: PersonReducerState }) => ({
+  persons: Object.values(person.persons),
+});
+
+const mapDispatchToProps = { addPerson };
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

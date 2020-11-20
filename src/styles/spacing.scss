@@ -1,0 +1,64 @@
+$properties: margin, padding;
+$sizes: (
+  sm: 6px,
+  md: 12px,
+);
+
+$sides: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right,
+);
+
+@each $prop in $properties {
+  .u-#{$prop} {
+    &--auto {
+      #{$prop}: auto;
+    }
+    @each $size, $value in $sizes {
+      &--#{$size} {
+        #{$prop}: $value;
+      }
+      &--none {
+        #{$prop}: 0;
+      }
+      &-v {
+        &--#{$size} {
+          #{$prop}-top: $value;
+          #{$prop}-bottom: $value;
+        }
+        &--none {
+          #{$prop}-top: 0;
+          #{$prop}-bottom: 0;
+        }
+      }
+      &-h {
+        &--#{$size} {
+          #{$prop}-left: $value;
+          #{$prop}-right: $value;
+        }
+        &--none {
+          #{$prop}-left: 0;
+          #{$prop}-right: 0;
+        }
+      }
+    }
+
+    @each $key, $side in $sides {
+      &-#{$key} {
+        &--none {
+          #{$prop}-#{$side}: 0;
+        }
+        &--auto {
+          #{$prop}-#{$side}: auto;
+        }
+        @each $size, $value in $sizes {
+          &--#{$size} {
+            #{$prop}-#{$side}: $value;
+          }
+        }
+      }
+    }
+  }
+}

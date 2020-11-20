@@ -1,11 +1,4 @@
-
 .u {
-  &-margin {
-    &-h--sm {
-      margin-left: 6px;
-      margin-right: 6px;
-    }
-  }
   &-width--full {
     width: 100%;
   }
@@ -18,5 +11,9 @@
     &--black {
       color: #000;
     }
+  }
+  &-children--center {
+    display: flex;
+    align-items: center;
   }
 }
